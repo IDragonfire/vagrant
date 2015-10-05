@@ -17,5 +17,5 @@ the [bash from git](https://git-scm.com/downloads) or add another ssh client to 
 
 # Notes
 
-* The main folder on th host is shared in the guest under `/faf` and `/vagrant`
+* The main folder on the host is shared in the guest under `/faf` and `/vagrant`
 * Port `80`, `3306`, `2000`, `3000`, `4000`, `5000`, `6000`, `7000` are forwared to the vm and must be open
