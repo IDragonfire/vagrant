@@ -2,11 +2,5 @@
 set -e
 
 apt-get -y update
-sudo usermod -a -G docker
-
-echo "========================================================"
-uname -a
-echo "Important: Manually update kernel to 3.8:"
-echo "$ sudo apt-get install linux-image-generic-lts-raring linux-headers-generic-lts-raring"
-echo "$ sudo reboot"
-echo "========================================================"
+sudo usermod -a -G docker vagrant
+sudo ln -s  /vagrant /faf

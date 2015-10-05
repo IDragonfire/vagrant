@@ -36,6 +36,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   provision_dir = "vagrant/provision"
 
   vm = config.vm
-  vm.provision :shell, path: "#{provision_dir}/vagrant_provision"
+
+  vm.provision :docker do |docker|
+    # Start here docker container
+  end
+
+    vm.provision :shell, path: "#{provision_dir}/vagrant_provision"
   vm.provision :shell, path: "#{provision_dir}/python_provision"
 end
