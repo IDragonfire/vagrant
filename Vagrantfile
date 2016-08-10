@@ -45,4 +45,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   vm.provision :shell, path: "#{provision_dir}/vagrant_provision"
   vm.provision :shell, path: "#{provision_dir}/python_provision"
+  vm.provision :shell, path: "#{provision_dir}/faf_provision"
 end

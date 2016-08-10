@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+
+cd /faf
+
+# DB 
+git clone https://github.com/FAForever/db.git
+
+# API
+git clone https://github.com/FAForever/api.git
+cd api
+git submodule init
+git submodule update -r
+sudo python3.5 -m pip install -r requirements.txt
+sudo python3.5 -m pip install -e db
+cp config.example.py config.py
+cd ..
+
+# faftools
+git clone https://github.com/FAForever/faftools.git
