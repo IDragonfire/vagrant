@@ -4,10 +4,10 @@ set -e
 echo -e "\n--- Install Python 3.5 ---\n"
 sudo add-apt-repository ppa:fkrull/deadsnakes -y
 sudo apt-get update
-sudo apt-get install -y python3.5
+sudo apt-get install -y python3.5 python3-pip
 
 echo -e "\n--- Install Python Dependencies ---\n"
 sudo apt-get install -y liblua5.1 liblua5.1-dev libmagickwand-dev python3.5-dev
 # for cryptography
-sudo apt-get install build-essential libssl-dev libffi-dev 
-sudo python3.5 -m pip install -r /vagrant/requirements.txt
+sudo apt-get install -y build-essential libssl-dev libffi-dev 
+sudo python3.5 -m pip install -r /vagrant/provision/requirements.txt
