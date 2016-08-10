@@ -2,16 +2,18 @@
 # vi: set ft=ruby :
 VAGRANTFILE_API_VERSION = "2"
 
-box = 'trusty64'
-box_url = 'https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box'
+box = 'mast3rof0/lubuntu64'
 hostname = 'develop'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = box
-  config.vm.box_url = box_url
 
   config.vm.provider "virtualbox" do |v|
     v.memory = 512
+    v.gui = true
+    # Disable USB 2.0 otherwise VM does not start on my system
+    v.customize ["modifyvm", :id, "--usb", "on"]
+    v.customize ["modifyvm", :id, "--usbehci", "off"]
   end
 
   config.vm.synced_folder ".", "/vagrant"
@@ -33,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 7000, host: 7000
 
   # -- Provisioning ----------------------------------------
-  provision_dir = "vagrant/provision"
+  provision_dir = "provision"
 
   vm = config.vm
 
@@ -41,6 +43,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Start here docker container
   end
 
-    vm.provision :shell, path: "#{provision_dir}/vagrant_provision"
+  vm.provision :shell, path: "#{provision_dir}/vagrant_provision"
   vm.provision :shell, path: "#{provision_dir}/python_provision"
 end

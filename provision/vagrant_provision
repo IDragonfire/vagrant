@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+apt-get update
+sudo usermod -a -G docker vagrant
+sudo ln -s  /vagrant /faf
+
+# To make the Vm usable (rescale and Co)
+sudo apt-get install -y virtualbox-guest-dkms virtualbox-guest-utils
+sudo cp /vagrant/provision/lightdm.conf /etc/lightdm/lightdm.conf

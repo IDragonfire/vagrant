@@ -1,6 +1,0 @@
-#!/bin/bash
-set -e
-
-apt-get -y update
-sudo usermod -a -G docker vagrant
-sudo ln -s  /vagrant /faf
