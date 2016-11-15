@@ -9,7 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = box
 
   config.vm.provider "virtualbox" do |v|
-    v.memory = 512
+    v.memory = 2048
     v.gui = true
     # Disable USB 2.0 otherwise VM does not start on my system
     v.customize ["modifyvm", :id, "--usb", "on"]
